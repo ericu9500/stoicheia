@@ -1,0 +1,60 @@
+{
+  "name": "stoicheia_fold_8",
+  "seed": 0,
+  "d_model": 1024,
+  "depth": 32,
+  "char_window": 256,
+  "attn": "flex",
+  "compile": true,
+  "qk_norm": true,
+  "seq_len": 8192,
+  "micro_batch": 4,
+  "grad_accum": 2,
+  "lr": 0.0003,
+  "wd": 0.1,
+  "clip": 1.0,
+  "warmup_frac": 0.04,
+  "decay_frac": 0.4,
+  "tier_weights": [
+    1.0,
+    1.0,
+    0.3
+  ],
+  "lam": 0.1,
+  "total_steps": 120000,
+  "hard_max_steps": 1000000,
+  "num_workers": 16,
+  "log_every": 20,
+  "ckpt_every": 2000,
+  "eval_every_ckpt": true,
+  "eval_n": 256,
+  "out_dir": "$STOICHEIA_DATA/runs/stoicheia_fold_8",
+  "eval_shards": "$STOICHEIA_DATA/folds/fold_8/val_shards/v1_punct",
+  "train_holdout": false,
+  "anneal_phases": [
+    [
+      0.5,
+      [
+        1.0,
+        1.0,
+        0.3
+      ]
+    ],
+    [
+      0.9,
+      [
+        1.0,
+        1.0,
+        0.0
+      ]
+    ],
+    [
+      1.0,
+      [
+        1.0,
+        0.0,
+        0.0
+      ]
+    ]
+  ]
+}

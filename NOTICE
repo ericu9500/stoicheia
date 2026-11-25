@@ -1,0 +1,21 @@
+Stoicheia
+Copyright 2026 Eric Cullhed and Albin Thörn Cleland
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Evaluation of the Ithaca and Aeneas baselines uses DeepMind's released code, obtained
+separately from their repositories (not vendored here): the Ithaca codebase
+from DeepMind:
+
+    Ithaca
+    Copyright DeepMind Technologies Limited
+    https://github.com/google-deepmind/ithaca
+    Licensed under the Apache License, Version 2.0
+
+Ithaca (Assael, Sommerschield, Shillingford, Bordbar, Pavlopoulos, Chatzipanagiotou,
+Androutsopoulos, Prag & de Freitas, "Restoring and attributing ancient texts using deep
+neural networks", Nature 2022) is used purely as a reference baseline that this project's
+own inscription-restoration evaluation code (`insc/eval/`) compares against. No code from
+Ithaca has been copied into this repository's source tree; the baseline harness expects a
+separately downloaded checkout (see `scripts/slurm/insc_ithaca_gpu.sbatch`), which retains
+its own LICENSE.

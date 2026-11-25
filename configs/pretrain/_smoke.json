@@ -1,0 +1,31 @@
+{
+  "name": "smoke",
+  "seed": 0,
+  "d_model": 1024,
+  "depth": 32,
+  "char_window": 256,
+  "attn": "flex",
+  "compile": true,
+  "qk_norm": true,
+  "seq_len": 8192,
+  "micro_batch": 4,
+  "grad_accum": 2,
+  "lr": 0.0003,
+  "wd": 0.1,
+  "clip": 1.0,
+  "warmup_frac": 0.04,
+  "decay_frac": 0.2,
+  "tier_weights": [
+    1.0,
+    1.0,
+    0.3
+  ],
+  "lam": 0.1,
+  "total_steps": 150,
+  "num_workers": 16,
+  "log_every": 5,
+  "ckpt_every": 100,
+  "eval_every_ckpt": true,
+  "eval_n": 64,
+  "out_dir": "$STOICHEIA_DATA/runs/pretrain_smoke"
+}

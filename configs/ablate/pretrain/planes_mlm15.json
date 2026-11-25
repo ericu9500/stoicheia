@@ -1,0 +1,62 @@
+{
+ "seed": 0,
+ "qk_norm": true,
+ "grad_accum": 4,
+ "micro_batch": 32,
+ "lr": 0.0006,
+ "wd": 0.1,
+ "clip": 1.0,
+ "warmup_frac": 0.04,
+ "decay_frac": 0.2,
+ "lam": 0.1,
+ "total_steps": 20000,
+ "num_workers": 20,
+ "log_every": 20,
+ "ckpt_every": 1000,
+ "eval_n": 128,
+ "compile": true,
+ "attn": "flex",
+ "d_model": 768,
+ "depth": 12,
+ "char_window": 256,
+ "seq_len": 4096,
+ "auto_anneal": false,
+ "eval_every_ckpt": true,
+ "tier_weights": [
+  1.0,
+  1.0,
+  0.3
+ ],
+ "anneal_phases": [
+  [
+   0.5,
+   [
+    1.0,
+    1.0,
+    0.3
+   ]
+  ],
+  [
+   0.9,
+   [
+    1.0,
+    1.0,
+    0.0
+   ]
+  ],
+  [
+   1.0,
+   [
+    1.0,
+    0.0,
+    0.0
+   ]
+  ]
+ ],
+ "noise": {
+  "t_min": 0.15,
+  "t_max": 0.15
+ },
+ "name": "planes_mlm15",
+ "out_dir": "$STOICHEIA_DATA/runs/ablate/pretrain/planes_mlm15"
+}

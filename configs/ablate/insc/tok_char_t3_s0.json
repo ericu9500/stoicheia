@@ -1,0 +1,31 @@
+{
+ "name": "insc_tok_char_t3_s0",
+ "seed": 0,
+ "torso": "$STOICHEIA_DATA/runs/ablate/pretrain/tok_char/final.pt",
+ "test_digit": "3",
+ "val_digit": "4",
+ "noise": {
+  "w_span": 0.45,
+  "w_word": 0.15,
+  "w_elastic": 0.05,
+  "w_iid": 0.15,
+  "w_halfword": 0.15,
+  "w_substitute": 0.05,
+  "span_mean": 4.0,
+  "span_max": 12
+ },
+ "seq_len_letters": 4096,
+ "seq_tokens": 5376,
+ "micro_batch": 32,
+ "grad_accum": 4,
+ "lr": 0.0001,
+ "wd": 0.1,
+ "warmup": 200,
+ "total_steps": 6000,
+ "decay_len": 1500,
+ "eval_every": 250,
+ "dev_cer_n_per_L": 60,
+ "dev_cer_L_max": 20,
+ "attn": "flex",
+ "out_dir": "$STOICHEIA_DATA/runs/ablate/insc/tok_char_t3_s0"
+}

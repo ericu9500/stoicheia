@@ -1,0 +1,65 @@
+[
+ {
+  "name": "GreBERTa",
+  "id": "bowphs/GreBerta",
+  "params_M": 126.0,
+  "non_embedding_M": 85.6,
+  "vocab": 52000,
+  "layers": 12,
+  "hidden": 768
+ },
+ {
+  "name": "PhilBERTa",
+  "id": "bowphs/PhilBerta",
+  "params_M": 135.2,
+  "non_embedding_M": 85.6,
+  "vocab": 64000,
+  "layers": 12,
+  "hidden": 768
+ },
+ {
+  "name": "Ancient-Greek-BERT",
+  "id": "pranaydeeps/Ancient-Greek-BERT",
+  "params_M": 112.9,
+  "non_embedding_M": 85.6,
+  "vocab": 35000,
+  "layers": 12,
+  "hidden": 768
+ },
+ {
+  "name": "XLM-R base",
+  "id": "xlm-roberta-base",
+  "params_M": 278.0,
+  "non_embedding_M": 85.6,
+  "vocab": 250002,
+  "layers": 12,
+  "hidden": 768
+ },
+ {
+  "name": "XLM-R large",
+  "id": "xlm-roberta-large",
+  "params_M": 559.9,
+  "non_embedding_M": 303.4,
+  "vocab": 250002,
+  "layers": 24,
+  "hidden": 1024
+ },
+ {
+  "name": "mBERT",
+  "id": "bert-base-multilingual-cased",
+  "params_M": 177.9,
+  "non_embedding_M": 85.6,
+  "vocab": 119547,
+  "layers": 12,
+  "hidden": 768
+ },
+ {
+  "name": "Logion (BERT base)",
+  "id": "princeton-logion/logion-bert-base",
+  "params_M": 124.4,
+  "non_embedding_M": 85.6,
+  "vocab": 50000,
+  "layers": 12,
+  "hidden": 768
+ }
+]

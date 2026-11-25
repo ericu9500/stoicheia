@@ -1,0 +1,37 @@
+#!/bin/bash
+#SBATCH -A YOUR_ACCOUNT   # EDIT: your SLURM account
+#SBATCH -p gpu   # EDIT: your GPU partition name
+#SBATCH --nodes 1
+#SBATCH --gpus-per-node 1
+#SBATCH --ntasks-per-node 1
+#SBATCH -c 32
+#SBATCH -t 02:00:00
+#SBATCH --job-name=strict-ours
+#SBATCH -o logs/strict-%j.out
+#SBATCH -e logs/strict-%j.out
+# SLURM copies the submitted script into a per-job spool dir before running it on this
+# cluster, so locating the repo via ${BASH_SOURCE[0]} resolves to that spool path, not
+# the real one ("/var/lib/slurm/..." errors downstream) -- a real failure mode hit
+# repeatedly in practice. $SLURM_SUBMIT_DIR is set by sbatch to the directory it was
+# invoked from, immune to that copy, and matches this repo's own submit-from-root
+# convention (see scripts/slurm/README.md point 6).
+STOICHEIA_ROOT="${SLURM_SUBMIT_DIR:-$PWD}"
+export STOICHEIA_ROOT
+# Strict-protocol eval of OUR model on the frozen samples file.
+# Usage: sbatch scripts/slurm/insc_strict_ours.sbatch <ckpt> <lengths> <out.json> [shard i,k] [samples file]
+set -euo pipefail
+CKPT="${1:?ckpt}"; LENGTHS="${2:?lengths}"; OUT="${3:?out}"; SHARD="${4:-}"
+INS_ROOT=$STOICHEIA_ROOT
+# Sourced ONCE here, at the top-level sbatch shell -- see the finetune launchersatch for why
+# (re-sourcing env.sh inside a remote srun'd `bash -lc` can silently leave $SIF unset).
+source "$INS_ROOT/env.sh"
+SAMPLES="${5:-$INS_DATA/strict_test_samples.json}"
+
+srun apptainer exec --nv $APPTAINER_BINDS $SIF bash -lc "
+    set -e
+    export PYTHONPATH=$STOICHEIA_ROOT
+    cd $INS_ROOT
+    python insc/eval/restore_strict.py --ckpt $CKPT --samples $SAMPLES \
+      --lengths $LENGTHS --out $OUT ${SHARD:+--shard $SHARD}
+  "
+echo STRICT_OURS_DONE

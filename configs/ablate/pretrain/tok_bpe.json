@@ -1,0 +1,59 @@
+{
+ "seed": 0,
+ "qk_norm": true,
+ "grad_accum": 4,
+ "micro_batch": 32,
+ "lr": 0.0006,
+ "wd": 0.1,
+ "clip": 1.0,
+ "warmup_frac": 0.04,
+ "decay_frac": 0.2,
+ "lam": 0.1,
+ "total_steps": 20000,
+ "num_workers": 20,
+ "log_every": 20,
+ "ckpt_every": 1000,
+ "eval_n": 128,
+ "compile": true,
+ "attn": "flex",
+ "d_model": 768,
+ "depth": 12,
+ "window_letters": 4096,
+ "tier_weights": [
+  1.0,
+  1.0,
+  0.3
+ ],
+ "anneal_phases": [
+  [
+   0.5,
+   [
+    1.0,
+    1.0,
+    0.3
+   ]
+  ],
+  [
+   0.9,
+   [
+    1.0,
+    1.0,
+    0.0
+   ]
+  ],
+  [
+   1.0,
+   [
+    1.0,
+    0.0,
+    0.0
+   ]
+  ]
+ ],
+ "tokenizer": "$STOICHEIA_DATA/ablate/tok/bpe",
+ "dia_dropout": false,
+ "window": 64,
+ "seq_tokens": 1280,
+ "name": "tok_bpe",
+ "out_dir": "$STOICHEIA_DATA/runs/ablate/pretrain/tok_bpe"
+}
